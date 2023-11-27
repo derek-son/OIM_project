@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Lost and Found</title>
 </head>
 <style>
     
 </style>
 <body>
+    <h1>Lost and Found</h1>
+    <form action="{{ url_for('search') }}" method="GET"></form>
+        <label for="search">Search By Name: </label>
+        <input type="text" id="search" name="search" required>
+        <button type="submit">Search</button>
+    </form>
     
+    #List of Lost and Found Items 
+    <h2>List of Lost and Found Items</h2>
+    <ul>
+        {% for item in items %}
+            <li>{{ item.name }} - {{ item.description }}  ({{ "Lost" if item.is_lost else "Found" }})</li>
+        {% endfor %}    
+    </ul>
 </body>
 </html>
