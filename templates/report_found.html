@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Found</title>
+    <title>Lost and Found - Report Found Item</title>
 </head>
-<style>
-    
-</style>
 <body>
-    
+    <h1>Report Found Item</h1>
+
+    <form action="{{ url_for('report_found') }}" method="POST">
+        {% if csrf_token() %}
+            {{ csrf_token() }}
+        {% endif %}
+        
+        <label for="name">Your Name: </label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="description">Item Description: </label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+            <button type="submit">Submit Report</button>
+    </form>
 </body>
 </html>
